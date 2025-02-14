@@ -7,10 +7,5 @@ import plotly.express as px
 #st.subheader("Creating dashboard...")
 #st.write("hello world")
 
-st.set_page_config(
-    page_title="US WAFFO DASHBORD FOR IRIS APP",
-    #page_icon="🏂",
-    layout="wide",
-    initial_sidebar_state="expanded")
-
-alt.themes.enable("dark")
+st.subheader('Aperçu des données')
+st.dataframe(df.head())
