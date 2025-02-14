@@ -6,5 +6,6 @@ import altair as alt
 #st.subheader("Creating dashboard...")
 #st.write("hello world")
 
+df = sns.load_dataset('Iris')
 st.subheader('Aperçu des données')
 st.dataframe(df.head())
