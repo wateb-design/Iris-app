@@ -39,3 +39,6 @@ elif menu == "Visualisation":
     st.write("""
         Ici, vous pouvez visualiser les données sous forme de graphiques.
     """)
+
+
+plot_type = st.selectbox("Choisissez un graphique", ["Histogramme", "Boxplot", "Heatmap"])
