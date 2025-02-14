@@ -10,4 +10,5 @@ import altair as alt
 #df = sns.load_dataset('Iris')
 st.set_page_config(page_title="Dashboard avec Menu Latéral", layout="wide")
 st.sidebar.title("Menu de Navigation")
+menu = st.sidebar.radio("Sélectionner une option", ["Vue d'ensemble", "Statistiques", "Visualisation"])
 
