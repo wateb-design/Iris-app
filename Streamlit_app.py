@@ -7,7 +7,7 @@ import altair as alt
 
 st.set_page_config(
     page_title="US WAFFO DASHBORD FOR IRIS APP",
-    page_icon="🏂",
+    #page_icon="🏂",
     layout="wide",
     initial_sidebar_state="expanded")
 
