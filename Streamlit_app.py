@@ -26,3 +26,10 @@ if menu == "Vue d'ensemble":
         Ce tableau montre un aperçu des données générées aléatoirement pour le dashboard.
     """)
     st.dataframe(data.head())
+
+elif menu == "Statistiques":
+    st.title("Statistiques descriptives")
+    st.write("""
+        Ces statistiques donnent un aperçu de la distribution des valeurs dans le jeu de données.
+    """)
+    st.write(data.describe())
