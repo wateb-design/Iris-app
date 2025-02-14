@@ -42,3 +42,29 @@ elif menu == "Visualisation":
 
 
 plot_type = st.selectbox("Choisissez un graphique", ["Histogramme", "Boxplot", "Heatmap"])
+
+if plot_type == "Histogramme":
+        st.subheader("Histogramme des colonnes")
+        fig, ax = plt.subplots()
+        data['Colonne A'].hist(bins=20, alpha=0.7, color='blue', label='Colonne A')
+        data['Colonne B'].hist(bins=20, alpha=0.7, color='red', label='Colonne B')
+        ax.set_title("Histogramme des colonnes A et B")
+        ax.set_xlabel("Valeurs")
+        ax.set_ylabel("Fréquence")
+        ax.legend()
+        st.pyplot(fig)
+
+    # Boxplot
+    elif plot_type == "Boxplot":
+        st.subheader("Boxplot des colonnes")
+        fig, ax = plt.subplots()
+        sns.boxplot(data=data[['Colonne A', 'Colonne B', 'Colonne C']], ax=ax)
+        ax.set_title("Boxplot des colonnes A, B et C")
+        st.pyplot(fig)
+elif plot_type == "Heatmap":
+        st.subheader("Heatmap des corrélations")
+        fig, ax = plt.subplots()
+        corr = data.corr()
+        sns.heatmap(corr, annot=True, cmap='coolwarm', fmt='.2f', ax=ax)
+        ax.set_title("Matrice de corrélation")
+        st.pyplot(fig)
