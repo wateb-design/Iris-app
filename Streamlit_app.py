@@ -29,13 +29,13 @@ if menu == "Vue d'ensemble":
 
 elif menu == "Statistiques":
     st.title("Statistiques descriptives")
+    st.write("""
+        Ces statistiques donnent un aperçu de la distribution des valeurs dans le jeu de données.
+    """)
+    st.write(data.describe())
 
 elif menu == "Visualisation":
     st.title("Visualisation des données")
     st.write("""
         Ici, vous pouvez visualiser les données sous forme de graphiques.
     """)
-    st.write("""
-        Ces statistiques donnent un aperçu de la distribution des valeurs dans le jeu de données.
-    """)
-    st.write(data.describe())
