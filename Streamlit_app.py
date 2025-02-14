@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import seaborn as sns
 import altair as alt
 
 #st.title("WELCOME TO WAFFO DASHBORD FOR IRIS WORK 2025")
