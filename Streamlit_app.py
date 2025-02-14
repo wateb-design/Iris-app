@@ -20,3 +20,9 @@ data = pd.DataFrame({
     'Colonne C': np.random.rand(100)
 })
 
+if menu == "Vue d'ensemble":
+    st.title("Vue d'ensemble des données")
+    st.write("""
+        Ce tableau montre un aperçu des données générées aléatoirement pour le dashboard.
+    """)
+    st.dataframe(data.head())
