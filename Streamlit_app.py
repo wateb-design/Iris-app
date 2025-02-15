@@ -11,7 +11,6 @@ def load_data():
     # Charger le fichier CSV localement
     df=pd.read_csv('Iris.csv', delimiter=";")
     return df
-st.write('hello world')
 df = load_data()
 
 # Afficher le jeu de données
@@ -35,7 +34,7 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 
 # Affichage de la précision du modèle
-st.write(f"Précision du modèle : {accuracy:.2f}")
+#st.write(f"Précision du modèle : {accuracy:.2f}")
 
 # Sauvegarder le modèle pour une utilisation ultérieure
 with open('iris_model.pkl', 'wb') as model_file:
@@ -52,7 +51,9 @@ if menu == "ACCEUIL":
 # Formulaire pour saisir les dimensions
 elif menu == "PREDICTION":
     st.title("PREDICTION DES FLEURS")
-    st.sidebar.write("Entrez les dimensions de la fleur :")
+    # Affichage de la précision du modèle
+    st.write(f"Précision du modèle : {accuracy:.2f}")
+    st.write("Entrez les dimensions de la fleur :")
     sepal_length = st.number_input("Longueur du sépale (cm)", min_value=0.0, max_value=10.0, value=5.0)
     sepal_width = st.number_input("Largeur du sépale (cm)", min_value=0.0, max_value=10.0, value=3.0)
     petal_length = st.number_input("Longueur du pétale (cm)", min_value=0.0, max_value=10.0, value=4.0)
