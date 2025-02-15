@@ -15,9 +15,9 @@ st.write('hello world')
 df = load_data()
 
 # Afficher le jeu de données
-st.title("Prédiction du type de fleur Iris")
-st.write("Voici un aperçu du jeu de données Iris :")
-st.dataframe(df.head())  # Affiche les 5 premières lignes du dataset
+#st.title("Prédiction du type de fleur Iris")
+#st.write("Voici un aperçu du jeu de données Iris :")
+#st.dataframe(df.head())  # Affiche les 5 premières lignes du dataset
 
 # Préparation des données pour l'entraînement
 X = df.drop(columns=["Species"])  # Variables explicatives
@@ -45,18 +45,38 @@ with open('iris_model.pkl', 'wb') as model_file:
 st.sidebar.title("Prédiction")
 menu = st.sidebar.radio("Sélectionner une option", ["ACCEUIL", "PREDICTION", "A PROPOS DE NOUS"])
 if menu == "ACCEUIL":
+    st.title("ACCEUIL")
     st.write("Voici un aperçu du jeu de données Iris :")
     st.dataframe(df.head()) 
+    
+# Formulaire pour saisir les dimensions
+elif menu == "PREDICTION":
+    st.title("PREDICTION DES FLEURS")
+    st.sidebar.write("Entrez les dimensions de la fleur :")
+    sepal_length = st.number_input("Longueur du sépale (cm)", min_value=0.0, max_value=10.0, value=5.0)
+    sepal_width = st.number_input("Largeur du sépale (cm)", min_value=0.0, max_value=10.0, value=3.0)
+    petal_length = st.number_input("Longueur du pétale (cm)", min_value=0.0, max_value=10.0, value=4.0)
+    petal_width = st.number_input("Largeur du pétale (cm)", min_value=0.0, max_value=10.0, value=1.3)
+
+# Prédiction du type de fleur
+    if st.sidebar.button("Prédire"):
+        # Créer un DataFrame à partir des entrées de l'utilisateur
+        user_input = pd.DataFrame([[sepal_length, sepal_width, petal_length, petal_width]], 
+                              columns=["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"])
+
+    # Prédire le type de fleur
+        predicted_species = model.predict(user_input)
+        st.write(f"La fleur prédit est de type : {predicted_species[0]}")
 
 
 
-st.sidebar.write("Entrez les dimensions de la fleur :")
+#st.sidebar.write("Entrez les dimensions de la fleur :")
 
 # Formulaire pour saisir les dimensions
-sepal_length = st.sidebar.number_input("Longueur du sépale (cm)", min_value=0.0, max_value=10.0, value=5.0)
-sepal_width = st.sidebar.number_input("Largeur du sépale (cm)", min_value=0.0, max_value=10.0, value=3.0)
-petal_length = st.sidebar.number_input("Longueur du pétale (cm)", min_value=0.0, max_value=10.0, value=4.0)
-petal_width = st.sidebar.number_input("Largeur du pétale (cm)", min_value=0.0, max_value=10.0, value=1.3)
+#sepal_length = st.sidebar.number_input("Longueur du sépale (cm)", min_value=0.0, max_value=10.0, value=5.0)
+#sepal_width = st.sidebar.number_input("Largeur du sépale (cm)", min_value=0.0, max_value=10.0, value=3.0)
+#petal_length = st.sidebar.number_input("Longueur du pétale (cm)", min_value=0.0, max_value=10.0, value=4.0)
+#petal_width = st.sidebar.number_input("Largeur du pétale (cm)", min_value=0.0, max_value=10.0, value=1.3)
 
 # Prédiction du type de fleur
 if st.sidebar.button("Prédire"):
