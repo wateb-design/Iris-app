@@ -7,12 +7,11 @@ import pickle
 
 # Charger le fichier CSV du jeu de données Iris
 @st.cache
-st.write('hello world')
 def load_data():
     # Charger le fichier CSV localement
     df = pd.read_csv('iris.csv')
     return df
-
+st.write('hello world')
 df = load_data()
 
 # Afficher le jeu de données
