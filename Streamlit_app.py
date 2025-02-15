@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score
 import pickle
 
 # Charger le fichier CSV du jeu de données Iris
-@st.cache
+#@st.cache
 def load_data():
     # Charger le fichier CSV localement
     df=pd.read_csv('Iris.csv', delimiter=";")
