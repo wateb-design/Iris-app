@@ -45,7 +45,9 @@ st.sidebar.title("Prédiction")
 menu = st.sidebar.radio("Sélectionner une option", ["ACCEUIL", "PREDICTION", "A PROPOS DE NOUS"])
 if menu == "ACCEUIL":
     st.title("ACCEUIL")
-    st.write("Voici un aperçu du jeu de données Iris :")
+    st.write("Bienvenue sur notre API de prédiction des especes de fleurs entrainée avec le jeu de donées <<Iris_Dataset.csv>>")
+    st.write("")
+    st.write("Voici un aperçu du jeu de données Iris (les 05 premières lignes) :")
     st.dataframe(df.head()) 
     
 # Formulaire pour saisir les dimensions
