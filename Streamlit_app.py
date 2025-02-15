@@ -43,6 +43,8 @@ with open('iris_model.pkl', 'wb') as model_file:
 
 # Interface pour saisir les dimensions de la fleur
 st.sidebar.title("Prédiction")
+menu = st.sidebar.radio("Sélectionner une option", ["Vue d'ensemble", "Statistiques", "Visualisation"])
+
 st.sidebar.write("Entrez les dimensions de la fleur :")
 
 # Formulaire pour saisir les dimensions
