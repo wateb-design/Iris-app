@@ -1,55 +1,51 @@
+# app.py
+
 import streamlit as st
 import pandas as pd
-from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
-from sklearn.preprocessing import StandardScaler
-import matplotlib.pyplot as plt
+
+# Chargement des données Iris (simulées)
+# Pour simplifier, nous allons travailler avec une petite table simulée pour la prédiction
+data = {
+    'species': ['Setosa', 'Versicolor', 'Virginica'],
+    'sepal_length_min': [4.3, 4.9, 5.5],
+    'sepal_length_max': [5.8, 7.0, 7.9],
+    'sepal_width_min': [2.3, 2.2, 2.3],
+    'sepal_width_max': [4.4, 3.4, 3.8],
+    'petal_length_min': [1.0, 3.0, 4.5],
+    'petal_length_max': [1.9, 5.1, 6.9],
+    'petal_width_min': [0.1, 1.0, 1.4],
+    'petal_width_max': [0.6, 2.0, 2.5]
+}
+
+df = pd.DataFrame(data)
 
 # Titre de l'application
 st.set_page_config(page_title="Prédiction de Fleur Iris", layout="wide")
+st.title("Prédiction du type de fleur Iris")
 
 # Menu latéral
-st.sidebar.title("Menu de Navigation")
+st.sidebar.title("Menu")
 menu = st.sidebar.radio("Choisir une option", ["Accueil", "Prédiction de Fleur", "A propos"])
 
-# Chargement des données Iris
-iris = load_iris()
-X = iris.data  # Les caractéristiques : longueur et largeur des sépales et des pétales
-y = iris.target  # Les labels : type de fleur (Setosa, Versicolor, Virginica)
-
-# Pré-traitement des données (normalisation)
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-
-# Entraînement du modèle (SVM)
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
-model = SVC(kernel='linear')  # Support Vector Classifier
-model.fit(X_train, y_train)
-
-# Accueil - Page principale
+# Accueil
 if menu == "Accueil":
-    st.title("Bienvenue sur l'application de prédiction de type de fleur Iris")
     st.write("""
-        Cette application utilise les dimensions de la fleur Iris pour prédire son type. 
-        Les utilisateurs peuvent entrer les dimensions d'une fleur et obtenir la prédiction de son type.
+        Bienvenue dans l'application de prédiction du type de fleur Iris.
+        Cette application utilise les dimensions des sépales et des pétales pour prédire le type de fleur (Setosa, Versicolor, Virginica).
     """)
 
-# A propos - Informations sur l'application
+# A propos
 elif menu == "A propos":
-    st.title("A propos de cette application")
     st.write("""
         L'iris est un célèbre ensemble de données de machine learning qui contient des mesures de fleurs Iris, 
         notamment la longueur et la largeur des sépales et des pétales. 
-        L'objectif de cette application est de prédire le type de fleur Iris (Setosa, Versicolor, Virginica) 
-        en fonction de ces mesures.
+        Cette application prédit le type de fleur Iris en fonction de ces mesures.
     """)
 
-# Prédiction de Fleur - Formulaire interactif
+# Prédiction de Fleur
 elif menu == "Prédiction de Fleur":
-    st.title("Prédiction du type de fleur Iris")
     st.write("""
-        Entrez les dimensions de la fleur et nous vous dirons quel type de fleur il s'agit.
+        Entrez les dimensions de la fleur Iris ci-dessous pour prédire son type.
     """)
 
     # Formulaire pour entrer les dimensions de la fleur
@@ -60,24 +56,17 @@ elif menu == "Prédiction de Fleur":
 
     # Lorsque l'utilisateur clique sur le bouton pour prédire
     if st.button("Prédire le type de fleur"):
-        # Préparation de la donnée entrée par l'utilisateur
-        input_data = [[sepal_length, sepal_width, petal_length, petal_width]]
-        input_data_scaled = scaler.transform(input_data)  # Normalisation des données
+        # Logique de prédiction simple basée sur les dimensions saisies
+        predicted_species = "Indéterminé"  # Valeur par défaut
 
-        # Prédiction avec le modèle
-        prediction = model.predict(input_data_scaled)
-        flower_type = iris.target_names[prediction][0]
-
-        # Affichage des résultats
-        st.write(f"Le type de la fleur est : {flower_type}")
-
-        # Affichage d'un graphique de la fleur
-        fig, ax = plt.subplots()
-        ax.scatter(sepal_length, sepal_width, label="Sépale", color="blue", s=100, marker="o")
-        ax.scatter(petal_length, petal_width, label="Pétale", color="red", s=100, marker="x")
-        ax.set_title("Visualisation des dimensions de la fleur")
-        ax.set_xlabel("Longueur (cm)")
-        ax.set_ylabel("Largeur (cm)")
-        ax.legend()
-        st.pyplot(fig)
+        for index, row in df.iterrows():
+            if (sepal_length >= row['sepal_length_min'] and sepal_length <= row['sepal_length_max'] and
+                sepal_width >= row['sepal_width_min'] and sepal_width <= row['sepal_width_max'] and
+                petal_length >= row['petal_length_min'] and petal_length <= row['petal_length_max'] and
+                petal_width >= row['petal_width_min'] and petal_width <= row['petal_width_max']):
+                predicted_species = row['species']
+                break
+        
+        # Affichage du résultat
+        st.write(f"Le type de la fleur est : {predicted_species}")
 
