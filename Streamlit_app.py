@@ -68,7 +68,7 @@ elif menu == "PREDICTION":
         # Créer un DataFrame à partir des entrées de l'utilisateur
         user_input = pd.DataFrame([[sepal_length, sepal_width, petal_length, petal_width]], 
                               columns=["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"])
-elif menu == "A PROPOS DE NOUS"
+elif menu == "A PROPOS DE NOUS":
     st.write("Etudiant à l'ENS de Yaoundé, filière informatique")
     st.write("@Waffo")
 
