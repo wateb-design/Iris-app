@@ -45,7 +45,7 @@ st.sidebar.title("Prédiction")
 menu = st.sidebar.radio("Sélectionner une option", ["ACCEUIL", "PREDICTION", "A PROPOS DE NOUS"])
 if menu == "ACCEUIL":
     st.title("ACCEUIL")
-    st.write("Bienvenue sur notre API de prédiction des especes de fleurs entrainée avec le jeu de donées <<Iris_Dataset.csv>>")
+    st.write("Bienvennue sur notre API de prédiction des especes de fleurs entrainée avec le jeu de donées <<Iris_Dataset.csv>>")
     st.write("")
     st.write("Voici un aperçu du jeu de données Iris (les 05 premières lignes) :")
     st.dataframe(df.head()) 
@@ -70,23 +70,3 @@ elif menu == "PREDICTION":
     # Prédire le type de fleur
         predicted_species = model.predict(user_input)
         st.write(f"La fleur prédit est de type : {predicted_species[0]}")
-
-
-
-#st.sidebar.write("Entrez les dimensions de la fleur :")
-
-# Formulaire pour saisir les dimensions
-#sepal_length = st.sidebar.number_input("Longueur du sépale (cm)", min_value=0.0, max_value=10.0, value=5.0)
-#sepal_width = st.sidebar.number_input("Largeur du sépale (cm)", min_value=0.0, max_value=10.0, value=3.0)
-#petal_length = st.sidebar.number_input("Longueur du pétale (cm)", min_value=0.0, max_value=10.0, value=4.0)
-#petal_width = st.sidebar.number_input("Largeur du pétale (cm)", min_value=0.0, max_value=10.0, value=1.3)
-
-# Prédiction du type de fleur
-#if st.sidebar.button("Prédire"):
-    # Créer un DataFrame à partir des entrées de l'utilisateur
-    #user_input = pd.DataFrame([[sepal_length, sepal_width, petal_length, petal_width]], 
-    #                          columns=["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"])
-
-    # Prédire le type de fleur
-    #predicted_species = model.predict(user_input)
-    #st.write(f"La fleur prédit est de type : {predicted_species[0]}")
