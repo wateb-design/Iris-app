@@ -9,7 +9,7 @@ import pickle
 @st.cache
 def load_data():
     # Charger le fichier CSV localement
-    df = pd.read_csv('Iris.csv')
+    df=pd.read_csv('Iris.csv', delimiter=";")
     return df
 st.write('hello world')
 df = load_data()
