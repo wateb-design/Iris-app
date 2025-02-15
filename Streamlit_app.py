@@ -55,7 +55,7 @@ petal_width = st.sidebar.number_input("Largeur du pétale (cm)", min_value=0.0, 
 if st.sidebar.button("Prédire"):
     # Créer un DataFrame à partir des entrées de l'utilisateur
     user_input = pd.DataFrame([[sepal_length, sepal_width, petal_length, petal_width]], 
-                              columns=["sepal_length", "sepal_width", "petal_length", "petal_width"])
+                              columns=["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"])
 
     # Prédire le type de fleur
     predicted_species = model.predict(user_input)
