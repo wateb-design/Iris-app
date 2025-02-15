@@ -1,6 +1,4 @@
 import streamlit as st
-st.write('hello world')
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -9,6 +7,7 @@ import pickle
 
 # Charger le fichier CSV du jeu de données Iris
 @st.cache
+st.write('hello world')
 def load_data():
     # Charger le fichier CSV localement
     df = pd.read_csv('iris.csv')
