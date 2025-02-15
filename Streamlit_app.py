@@ -20,7 +20,7 @@ st.write("Voici un aperçu du jeu de données Iris :")
 st.dataframe(df.head())  # Affiche les 5 premières lignes du dataset
 
 # Préparation des données pour l'entraînement
-X = df.drop(columns=["species"])  # Variables explicatives
+X = df.drop(columns=["Species"])  # Variables explicatives
 y = df["species"]  # Variable cible
 
 # Diviser les données en ensembles d'entraînement et de test
