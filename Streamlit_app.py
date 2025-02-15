@@ -68,10 +68,10 @@ elif menu == "PREDICTION":
         # Créer un DataFrame à partir des entrées de l'utilisateur
         user_input = pd.DataFrame([[sepal_length, sepal_width, petal_length, petal_width]], 
                               columns=["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"])
-elif menu == "A PROPOS DE NOUS":
-    st.write("Etudiant à l'ENS de Yaoundé, filière informatique")
-    st.write("@Waffo")
-
     # Prédire le type de fleur
         predicted_species = model.predict(user_input)
         st.write(f"La fleur prédit est de type : {predicted_species[0]}")
+
+elif menu == "A PROPOS DE NOUS":
+    st.write("Etudiant à l'ENS de Yaoundé, filière informatique")
+    st.write("@Waffo")
