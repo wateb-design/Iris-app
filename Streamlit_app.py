@@ -44,6 +44,11 @@ with open('iris_model.pkl', 'wb') as model_file:
 # Interface pour saisir les dimensions de la fleur
 st.sidebar.title("Prédiction")
 menu = st.sidebar.radio("Sélectionner une option", ["ACCEUIL", "PREDICTION", "A PROPOS DE NOUS"])
+if menu == "ACCEUIL":
+    st.write("Voici un aperçu du jeu de données Iris :")
+    st.dataframe(df.head()) 
+
+
 
 st.sidebar.write("Entrez les dimensions de la fleur :")
 
