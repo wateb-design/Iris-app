@@ -59,7 +59,7 @@ elif menu == "PREDICTION":
     petal_width = st.number_input("Largeur du pétale (cm)", min_value=0.0, max_value=10.0, value=1.3)
 
 # Prédiction du type de fleur
-    if st.sidebar.button("Prédire"):
+    if st.button("Prédire"):
         # Créer un DataFrame à partir des entrées de l'utilisateur
         user_input = pd.DataFrame([[sepal_length, sepal_width, petal_length, petal_width]], 
                               columns=["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"])
